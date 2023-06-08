@@ -1,5 +1,3 @@
 openai
-numpy 
-tensorflow
 keras_ocr
 opencv-python
