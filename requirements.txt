@@ -1,0 +1,6 @@
+openai
+os
+numpy 
+tensorflow
+keras_ocr
+cv2
