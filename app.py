@@ -2,10 +2,11 @@ import streamlit as st
 import openai
 import keras_ocr
 import cv2
-
+import os
+import numpy as np
 
 openai.api_key = st.secrets["api_key"]
-data_dir = ''
+data_dir = '.'
 image_url = ''
 st.title("GPT + DALL-E & Object Detection")
 
@@ -119,7 +120,8 @@ if submit and user_input:
     
     st.write("============Detection Test============")
     
-    image = keras_ocr.tools.read('car1.jpg')
+    imagePath = os.path.join(data_dir, 'car1.jpg')
+    image = keras_ocr.tools.read(imagePath)
     st.image(image)
     pred_boxes = detector.detect(np.expand_dims(image, axis=0))
     for each_pred in pred_boxes[0]:
@@ -130,7 +132,9 @@ if submit and user_input:
     st.image(image)
     st.write("============OCR Test============")
 
-    image = keras_ocr.tools.read('al47.png')
+
+    imagePath = os.path.join(data_dir, 'al47.png')
+    image = keras_ocr.tools.read(imagePath)
     st.image(image)
     prediction = recognizer.recognize(image)
     print(prediction)
