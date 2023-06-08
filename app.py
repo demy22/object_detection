@@ -1,8 +1,5 @@
 import streamlit as st
 import openai
-import os
-import numpy as np
-import tensorflow as tf
 import keras_ocr
 import cv2
 
